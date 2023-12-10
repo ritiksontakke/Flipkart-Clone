@@ -1,4 +1,11 @@
+import { useSelector } from "react-redux";
+
 const Home = () => {
+  let {categories} = useSelector((state)=>{
+    return state.product;
+ });
+
+    console.log(categories);  
   return (
     <>
       <div className="container-fluid categories" style={{ marginTop: "60px" }}>
