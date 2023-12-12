@@ -21,12 +21,12 @@ const AllProducts = () => {
   //onLoad
   useEffect(() => {
     getProductList();
-    
+
     //on unmount ..removing list
-    return ()=>{
+    return () => {
       dispatch(saveProduct([]));
-    }
-  },[]);
+    };
+  }, []);
   return (
     <>
       <div className="container" style={{ marginTop: "60px" }}>
@@ -45,10 +45,12 @@ const AllProducts = () => {
                     src={product.image}
                     className="card-img-top-img"
                     alt="..."
-                    style={{height:"50vh"}}
+                    style={{ height: "50vh" }}
                   />
                   <div className="card-body text-center">
-                    <h6 className="product-style mb-2 ">{product.title}</h6>
+                    <h6 className="product-style mb-2 ">
+                      {product.title.substring(0, 10)}
+                    </h6>
                     <div className="overflow">
                       <p className="product-name">
                         {product.description.substring(0, 30)}
