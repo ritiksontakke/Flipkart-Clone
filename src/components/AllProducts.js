@@ -1,229 +1,137 @@
-const AllProducts = ()=>{
-    return <>
-     <div className="container" style={{marginTop: "60px"}}>
-       
-       <div className="py-3">
-           <h5>All Products</h5>
-       </div>
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { get } from "../service/product.service";
+import { saveProduct } from "../redux/product.slice";
+import { useDispatch, useSelector } from "react-redux";
 
-       <div className="row mb-3">
-         <div className="col-md-3">
-           <div  className="card size">
-               <img src="https://rukminim1.flixcart.com/image/612/612/kuczmvk0/shopsy-t-shirt/7/j/f/l-mens-xoxo-white-smartees-original-imag7hb3xgfe86nh.jpeg?q=70"
-                   className="card-img-top-img" alt="..."/>
-               <div className="card-body text-center">
-                   <h6 className="product-style">Smartees</h6>
-                   <div className="overflow">
-                   <p className="product-name">Men Typography Round Neck </p>
-               </div>
-               <div className="">
-                       <span className="pe-2">₹199</span>
-                       <span className="text-secondary pe-2"><del>₹199</del></span>
-                       <span className="text-success">80% off</span>
-               </div>
-               <div>
-                   <p className="product-sizes"> <span className="text-secondary">Size</span>  <span className="product-sizes-level">M, L, XL</span> </p>
-             
-           </div>
-         </div>
-       </div>
+const AllProducts = () => {
+  let [searchParams] = useSearchParams();
+  let dispatch = useDispatch();
+  let { productList } = useSelector((state) => {
+    return state.product;
+  });
+  let getProductList = async () => {
+    let id = searchParams.get("c_id");
+    let url = "http://localhost:3001/products?c_id=" + id;
+    let result = await get(url);
+    if (result) {
+      dispatch(saveProduct(result));
+    }
+  };
+  //onLoad
+  useEffect(() => {
+    getProductList();
+    
+    //on unmount ..removing list
+    return ()=>{
+      dispatch(saveProduct([]));
+    }
+  },[]);
+  return (
+    <>
+      <div className="container" style={{ marginTop: "60px" }}>
+        <div className="py-3">
+          <h5 className="text-capitalize">
+            All Products of {searchParams.get("cat_name")}
+          </h5>
         </div>
-        <div className="col-md-3">
-           <div  className="card size">
-               <img src="https://rukminim1.flixcart.com/image/612/612/kuczmvk0/shopsy-t-shirt/7/j/f/l-mens-xoxo-white-smartees-original-imag7hb3xgfe86nh.jpeg?q=70"
-                   className="card-img-top-img" alt="..."/>
-               <div className="card-body text-center">
-                   <h6 className="product-style">Smartees</h6>
-                   <div className="overflow">
-                   <p className="product-name">Men Typography Round Neck </p>
-               </div>
-               <div className="">
-                       <span className="pe-2">₹199</span>
-                       <span className="text-secondary pe-2"><del>₹199</del></span>
-                       <span className="text-success">80% off</span>
-               </div>
-               <div>
-                   <p className="product-sizes"> <span className="text-secondary">Size</span>  <span className="product-sizes-level">M, L, XL</span> </p>
-             
-           </div>
-         </div>
-       </div>
+
+        <div className="row mb-3">
+          {productList.map((product) => {
+            return (
+              <div className="col-md-3 mb-3" key={product.id}>
+                <div className="card size">
+                  <img
+                    src={product.image}
+                    className="card-img-top-img"
+                    alt="..."
+                    style={{height:"50vh"}}
+                  />
+                  <div className="card-body text-center">
+                    <h6 className="product-style mb-2 ">{product.title}</h6>
+                    <div className="overflow">
+                      <p className="product-name">
+                        {product.description.substring(0, 30)}
+                      </p>
+                    </div>
+                    <div className="">
+                      <span className="pe-2">₹{product.price}</span>
+                      <span className="text-secondary pe-2">
+                        <del>₹{product.price * 2}</del>
+                      </span>
+                      <span className="text-success">50% off</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
-        <div className="col-md-3">
-           <div  className="card size">
-               <img src="https://rukminim1.flixcart.com/image/612/612/kuczmvk0/shopsy-t-shirt/7/j/f/l-mens-xoxo-white-smartees-original-imag7hb3xgfe86nh.jpeg?q=70"
-                   className="card-img-top-img" alt="..."/>
-               <div className="card-body text-center">
-                   <h6 className="product-style">Smartees</h6>
-                   <div className="overflow">
-                   <p className="product-name">Men Typography Round Neck </p>
-               </div>
-               <div className="">
-                       <span className="pe-2">₹199</span>
-                       <span className="text-secondary pe-2"><del>₹199</del></span>
-                       <span className="text-success">80% off</span>
-               </div>
-               <div>
-                   <p className="product-sizes"> <span className="text-secondary">Size</span>  <span className="product-sizes-level">M, L, XL</span> </p>
-             
-           </div>
-         </div>
-       </div>
-        </div>
-        <div className="col-md-3">
-           <div  className="card size">
-               <img src="https://rukminim1.flixcart.com/image/612/612/kuczmvk0/shopsy-t-shirt/7/j/f/l-mens-xoxo-white-smartees-original-imag7hb3xgfe86nh.jpeg?q=70"
-                   className="card-img-top-img" alt="..."/>
-               <div className="card-body text-center">
-                   <h6 className="product-style">Smartees</h6>
-                   <div className="overflow">
-                   <p className="product-name">Men Typography Round Neck </p>
-               </div>
-               <div className="">
-                       <span className="pe-2">₹199</span>
-                       <span className="text-secondary pe-2"><del>₹199</del></span>
-                       <span className="text-success">80% off</span>
-               </div>
-               <div>
-                   <p className="product-sizes"> <span className="text-secondary">Size</span>  <span className="product-sizes-level">M, L, XL</span> </p>
-             
-           </div>
-         </div>
-       </div>
-        </div>
-       </div>
-       <div className="row mb-3">
-           <div className="col-md-3">
-             <div  className="card size">
-                 <img src="https://rukminim1.flixcart.com/image/612/612/kuczmvk0/shopsy-t-shirt/7/j/f/l-mens-xoxo-white-smartees-original-imag7hb3xgfe86nh.jpeg?q=70"
-                     className="card-img-top-img" alt="..."/>
-                 <div className="card-body text-center">
-                     <h6 className="product-style">Smartees</h6>
-                     <div className="overflow">
-                     <p className="product-name">Men Typography Round Neck </p>
-                 </div>
-                 <div className="">
-                         <span className="pe-2">₹199</span>
-                         <span className="text-secondary pe-2"><del>₹199</del></span>
-                         <span className="text-success">80% off</span>
-                 </div>
-                 <div>
-                     <p className="product-sizes"> <span className="text-secondary">Size</span>  <span className="product-sizes-level">M, L, XL</span> </p>
-               
-             </div>
-           </div>
-         </div>
-          </div>
-          <div className="col-md-3">
-             <div  className="card size">
-                 <img src="https://rukminim1.flixcart.com/image/612/612/kuczmvk0/shopsy-t-shirt/7/j/f/l-mens-xoxo-white-smartees-original-imag7hb3xgfe86nh.jpeg?q=70"
-                     className="card-img-top-img" alt="..."/>
-                 <div className="card-body text-center">
-                     <h6 className="product-style">Smartees</h6>
-                     <div className="overflow">
-                     <p className="product-name">Men Typography Round Neck </p>
-                 </div>
-                 <div className="">
-                         <span className="pe-2">₹199</span>
-                         <span className="text-secondary pe-2"><del>₹199</del></span>
-                         <span className="text-success">80% off</span>
-                 </div>
-                 <div>
-                     <p className="product-sizes"> <span className="text-secondary">Size</span>  <span className="product-sizes-level">M, L, XL</span> </p>
-               
-             </div>
-           </div>
-         </div>
-          </div>
-          <div className="col-md-3">
-             <div  className="card size">
-                 <img src="https://rukminim1.flixcart.com/image/612/612/kuczmvk0/shopsy-t-shirt/7/j/f/l-mens-xoxo-white-smartees-original-imag7hb3xgfe86nh.jpeg?q=70"
-                     className="card-img-top-img" alt="..."/>
-                 <div className="card-body text-center">
-                     <h6 className="product-style">Smartees</h6>
-                     <div className="overflow">
-                     <p className="product-name">Men Typography Round Neck </p>
-                 </div>
-                 <div className="">
-                         <span className="pe-2">₹199</span>
-                         <span className="text-secondary pe-2"><del>₹199</del></span>
-                         <span className="text-success">80% off</span>
-                 </div>
-                 <div>
-                     <p className="product-sizes"> <span className="text-secondary">Size</span>  <span className="product-sizes-level">M, L, XL</span> </p>
-               
-             </div>
-           </div>
-         </div>
-          </div>
-          <div className="col-md-3">
-             <div  className="card size">
-                 <img src="https://rukminim1.flixcart.com/image/612/612/kuczmvk0/shopsy-t-shirt/7/j/f/l-mens-xoxo-white-smartees-original-imag7hb3xgfe86nh.jpeg?q=70"
-                     className="card-img-top-img" alt="..."/>
-                 <div className="card-body text-center">
-                     <h6 className="product-style">Smartees</h6>
-                     <div className="overflow">
-                     <p className="product-name">Men Typography Round Neck </p>
-                 </div>
-                 <div className="">
-                         <span className="pe-2">₹199</span>
-                         <span className="text-secondary pe-2"><del>₹199</del></span>
-                         <span className="text-success">80% off</span>
-                 </div>
-                 <div>
-                     <p className="product-sizes"> <span className="text-secondary">Size</span>  <span className="product-sizes-level">M, L, XL</span> </p>
-               
-             </div>
-           </div>
-         </div>
-          </div>
-         </div>
 
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Login
+                </h5>
 
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <p className="p-3 p-3 pb-0">
+                Get access to your Orders, Wishlist and Recommendations
+              </p>
+              <div className="modal-body">
+                <form>
+                  <div className="mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Your Name"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Email/Mobile no"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Password"
+                    />
+                  </div>
 
-
-
-         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-           <div className="modal-dialog">
-             <div className="modal-content">
-               <div className="modal-header">
-                 <h5 className="modal-title" id="exampleModalLabel">Login
-                   </h5>
-                  
-                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-               <p className="p-3 p-3 pb-0">Get access to your Orders, Wishlist and Recommendations</p>
-               <div className="modal-body">
-                 <form>
-                   <div className="mb-3">
-                     <input type="text" className="form-control" placeholder="Enter Your Name"/>
-                   </div>
-                   <div className="mb-3">
-                       <input type="text" className="form-control" placeholder="Enter Email/Mobile no"/>
-                     </div>
-                     <div className="mb-3">
-                       <input type="text" className="form-control" placeholder="Enter Password"/>
-                     </div>
-   
-                   {/* <!-- <div className="mb-3">
+                  {/* <!-- <div className="mb-3">
                        <input type="text" className="form-control" placeholder="Enter OTP"/>
                      </div> --> */}
-                  
-                 </form>
-               </div>
-               <div className="modal-footer  justify-content-center">
-                   
-                   {/* <!-- <button type="button" className="btn btn-primary">Login</button> -->
+                </form>
+              </div>
+              <div className="modal-footer  justify-content-center">
+                {/* <!-- <button type="button" className="btn btn-primary">Login</button> -->
                    <button type="button" className="btn btn-primary">Sign Up</button>
                  <!-- <p className="text-sm">By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</p> --> */}
-               </div>
-             </div>
-           </div>
-         </div>
-         </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
-
-    
-}
+  );
+};
 
 export default AllProducts;

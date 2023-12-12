@@ -1,80 +1,59 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { saveCategories } from "../redux/product.slice";
+import { get } from "./../service/product.service";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  let {categories} = useSelector((state)=>{
+  let { categories } = useSelector((state) => {
     return state.product;
- });
+  });
+  let dispatch = useDispatch();
+  let navigate = useNavigate();
+  //useState
 
-    console.log(categories);  
+  let getAData = async () => {
+    let url = "http://localhost:3001/categories";
+    let result = await get(url);
+    if (result) {
+      dispatch(saveCategories(result));
+    }
+  };
+
+  //onload ---> mountaing
+  useEffect(() => {
+    if (categories.length === 0) getAData();
+    //console.log("home is mounted")
+    //unmounting
+    return () => {
+      //console.log("home is unmounted")
+    };
+  }, []);
   return (
     <>
       <div className="container-fluid categories" style={{ marginTop: "60px" }}>
         <div className="container">
-          <div className="d-flex justify-content-between catemobile">
-            <div className="items text-center">
-              <div className="catimg">
-                <img width="64px" src="img/category/offers.webp" alt="" />
-              </div>
-              <div className="catname">Top Offers</div>
-            </div>
-            <div className="items text-center">
-              <div className="catimg">
-                <img width="64px" src="img/category/Grocery.webp" alt="" />
-              </div>
-              <div className="catname">Grocery</div>
-            </div>
-            <div className="items text-center">
-              <div className="catimg">
-                <img width="64px" src="img/category/Mobiles.webp" alt="" />
-              </div>
-              <div className="catname">Mobiles</div>
-            </div>
-            <div className="items text-center">
-              <div className="catimg">
-                <img width="64px" src="img/category/Fashion.webp" alt="" />
-              </div>
-              <div className="catname">Fashion</div>
-            </div>
-            <div className="items text-center">
-              <div className="catimg">
-                <img width="64px" src="img/category/Electronics.webp" alt="" />
-              </div>
-              <div className="catname">Electronics</div>
-            </div>
-            <div className="items text-center">
-              <div className="catimg">
-                <img width="64px" src="img/category/Home.webp" alt="" />
-              </div>
-              <div className="catname">Home</div>
-            </div>
-            <div className="items text-center">
-              <div className="catimg">
-                <img width="64px" src="img/category/Appliances.webp" alt="" />
-              </div>
-              <div className="catname">Appliances</div>
-            </div>
-            <div className="items text-center">
-              <div className="catimg">
-                <img width="64px" src="img/category/Travel.webp" alt="" />
-              </div>
-              <div className="catname">Travel</div>
-            </div>
-            <div className="items text-center">
-              <div className="catimg">
-                <img
-                  width="64px"
-                  src="img/category/Beauty, Toys & More.webp"
-                  alt=""
-                />
-              </div>
-              <div className="catname">Beauty, Toys & More</div>
-            </div>
-            <div className="items text-center">
-              <div className="catimg">
-                <img width="64px" src="img/category/Two Wheelers.webp" alt="" />
-              </div>
-              <div className="catname">Two Wheelers</div>
-            </div>
+          <div className="d-flex justify-content-between catemobile gap-3">
+            {categories.map((category) => {
+              return (
+                <div
+                  onClick={() =>
+                    navigate(
+                      `/products?c_id=${category.c_id}&cat_name=${category.category}`
+                    )
+                  }
+                  className="items text-center"
+                  key={category.c_id}
+                >
+                  <div className="catimg">
+                    <img width="64px" src="img/category/offers.webp" alt="" />
+                  </div>
+                  <div className="catname text-capitalize">
+                    {category.category}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

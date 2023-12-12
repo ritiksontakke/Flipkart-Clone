@@ -4,7 +4,7 @@ let ProductSlice = createSlice({
   name: "ProductSlice",
   initialState: {
     productList: [],
-    categories:[],
+    categories: [],
   },
   reducers: {
     saveProduct: (state, action) => {
@@ -17,4 +17,4 @@ let ProductSlice = createSlice({
 });
 
 export default ProductSlice.reducer;
-export const { saveProduct,  saveCategories} =  ProductSlice.actions;
+export const { saveProduct, saveCategories } = ProductSlice.actions;
