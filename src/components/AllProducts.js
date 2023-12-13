@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { get } from "../service/product.service";
-import { saveProduct } from "../redux/product.slice";
+import { saveProduct, saveToCart } from "../redux/product.slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const AllProducts = () => {
@@ -39,7 +39,11 @@ const AllProducts = () => {
         <div className="row mb-3">
           {productList.map((product) => {
             return (
-              <div className="col-md-3 mb-3" key={product.id}>
+              <div
+                className="col-md-3 mb-3"
+                key={product.id}
+                title={product.title + "-" + product.description}
+              >
                 <div className="card size">
                   <img
                     src={product.image}
@@ -63,6 +67,14 @@ const AllProducts = () => {
                       </span>
                       <span className="text-success">50% off</span>
                     </div>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() =>
+                        dispatch(saveToCart({ ...product, qty: 1 }))
+                      }
+                    >
+                      Add To Cart
+                    </button>
                   </div>
                 </div>
               </div>
