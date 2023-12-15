@@ -1,4 +1,26 @@
+import { useDispatch, useSelector } from "react-redux";
+import { manageQty, removeFromCart } from "../redux/product.slice";
+import { useEffect, useState } from "react";
+
 const Cart = () => {
+  let [totalPrice, setTotalPrice] = useState({ qtyCount: 0, QtyPrice: 0 });
+  let dispatch = useDispatch();
+  let { cart } = useSelector((state) => {
+    return state.product;
+  });
+  useEffect(() => {
+    let price = cart.reduce(
+      (preValue, currentValue) => {
+        let pTotal = Math.round(currentValue.qty * currentValue.price);
+        return {
+          qtyCount: preValue.qtyCount + currentValue.qty,
+          QtyPrice: preValue.QtyPrice + pTotal,
+        };
+      },
+      { qtyCount: 0, QtyPrice: 0 }
+    );
+    setTotalPrice(price);
+  }, [cart]);
   return (
     <>
       <div className="container" style={{ marginTop: "60px" }}>
@@ -11,32 +33,55 @@ const Cart = () => {
             <div className="d-non">
               <div className="card mb-3">
                 <div className="card-body">
-                  <div className="d-flex">
-                    <div className="px-4">
-                      <img
-                        src="./img/productimg/productdetails.webp"
-                        className="cartpImg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="">
-                      <p className="card-title">
-                        JUARI BE A GENTLEMAN Printed Men Round Neck White
-                      </p>
-                      <div className="text-secondary">
-                        <p className="mb-0">Size: S</p>
-                        <p>Seller:JUARI</p>
-                      </div>
+                  {cart.map((_cart, index) => {
+                    return (
+                      <>
+                        <div className="d-flex" key={index}>
+                          <div className="px-4">
+                            <img
+                              src={_cart.image}
+                              className="cartpImg"
+                              alt=""
+                            />
+                          </div>
+                          <div className="">
+                            <p className="card-title">{_cart.title}</p>
+                            <div className="text-secondary">
+                              <p className="mb-0 text-capitalize">
+                                Category: {_cart.category}
+                              </p>
+                              <p>Quantity: {_cart.qty}</p>
+                            </div>
 
-                      <p className="card-text">₹94,800</p>
-                      <a href="#" className="btn ">
-                        Save for Later
-                      </a>
-                      <a href="#" className="btn ">
-                        Remove
-                      </a>
-                    </div>
-                  </div>
+                            <p className="card-text">₹{_cart.price}/-</p>
+                            <button
+                              className="btn btn-success btn-sm"
+                              onClick={() =>
+                                dispatch(manageQty({ index, sing: "+" }))
+                              }
+                            >
+                              +
+                            </button>
+                            <button
+                              className="btn btn-primary btn-sm mx-1"
+                              onClick={() =>
+                                dispatch(manageQty({ index, sing: "-" }))
+                              }
+                            >
+                              -
+                            </button>
+                            <button
+                              className="btn btn-danger rounded-0 btn-sm"
+                              onClick={() => dispatch(removeFromCart(index))}
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        </div>
+                        {cart.length - 1 === index ? null : <hr />}
+                      </>
+                    );
+                  })}
                 </div>
               </div>
               <div className="card mb-3">
@@ -78,7 +123,9 @@ const Cart = () => {
                 <div className="card-body">
                   <div className="mb-2">
                     <div>2. DELIVERY ADDRESS</div>
-                    <div className="bg-light py-2 px-3 mt-3">Add new Address</div>
+                    <div className="bg-light py-2 px-3 mt-3">
+                      Add new Address
+                    </div>
                   </div>
                 </div>
               </div>
@@ -112,37 +159,38 @@ const Cart = () => {
             {/* <!-- Add more product cards here --> */}
           </div>
           <div className="col-md-4">
-            <div className="card">
+            <div className="card" style={{ position: "sticky", top: "70px" }}>
               <div className="card-body">
-                <h6 className="card-title border-bottom pb-3">PRICE DETAILS </h6>
+                <h6 className="card-title border-bottom pb-3">
+                  PRICE DETAILS{" "}
+                </h6>
                 <table className="table">
                   <tbody>
                     <tr className="border-white">
-                      <td>Price (1 item) </td>
-                      <td>₹94,598 </td>
+                      <td>Price ({totalPrice.qtyCount} item) </td>
+                      <td>₹{totalPrice.QtyPrice}</td>
                     </tr>
                     <tr className="border-white">
                       <td>Discount </td>
                       <td>
-                        {" "}
-                        <span className="text-success">- ₹3000</span>{" "}
+                        <span className="text-success">- ₹0</span>
                       </td>
                     </tr>
 
                     <tr className="">
                       <td>Delivery Charges </td>
                       <td>
-                        {" "}
-                        <span className="text-success">FREE</span>{" "}
+                        <span className="text-success">FREE</span>
                       </td>
                     </tr>
                     <tr className="border-white ">
                       <td>
-                        {" "}
-                        <span className="font-weight-bold">Total Amount </span>{" "}
+                        <span className="font-weight-bold">Total Amount </span>
                       </td>
                       <td>
-                        <span className="font-weight-bold">₹94,598</span>{" "}
+                        <span className="font-weight-bold">
+                          ₹{totalPrice.QtyPrice}
+                        </span>
                       </td>
                     </tr>
                   </tbody>
@@ -156,7 +204,7 @@ const Cart = () => {
       <div
         className="modal fade"
         id="exampleModal"
-        tabndex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >

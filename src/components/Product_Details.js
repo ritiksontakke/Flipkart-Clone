@@ -18,10 +18,13 @@ const Product_Details = () => {
             >
               <span
                 className="navbar-toggler-icon text-white"
-                style={{color: "#fff"}}
+                style={{ color: "#fff" }}
               ></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
               <form className="d-flex col-md-7">
                 <input
                   className="form-control me-2"
@@ -76,7 +79,10 @@ const Product_Details = () => {
                   >
                     More
                   </a>
-                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdown"
+                  >
                     <li>
                       <a className="dropdown-item" href="#">
                         Notification Preprensences
@@ -84,7 +90,7 @@ const Product_Details = () => {
                     </li>
                     <li>
                       <a className="dropdown-item" href="#">
-                        27/7 Customer Care{" "}
+                        27/7 Customer Care
                       </a>
                     </li>
                     <li>
@@ -99,7 +105,6 @@ const Product_Details = () => {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
-                    {" "}
                     <i className="bi bi-cart-fill"></i>
                     Cart
                   </a>
@@ -110,7 +115,7 @@ const Product_Details = () => {
         </div>
       </div>
 
-      <section style={{marginTop: "60px"}} />
+      <section style={{ marginTop: "60px" }} />
       <div className="container-fluid px-5 bg-light">
         <div className="row bg-white">
           {/* <!-- Product picture --> */}
@@ -129,16 +134,25 @@ const Product_Details = () => {
                 <div className="row buttons justify-content-center ">
                   <button
                     className="btn  col-sm-4 col-sm-offset-2 btn-lg me-4 brnone"
-                    style={{backgroundColor:"#ff9f00", color:"#fff", fontSize:"1em"}}
+                    style={{
+                      backgroundColor: "#ff9f00",
+                      color: "#fff",
+                      fontSize: "1em",
+                    }}
                   >
                     <span className="glyphicon glyphicon-shopping-cart"></span>
                     &nbsp;ADD TO CART
                   </button>
                   <button
                     className="btn col-sm-4 col-sm-offset-1 btn-lg brnone"
-                    style={{backgroundColor:"#fb641b", color:"#fff", fontSize:"1em"}}
+                    style={{
+                      backgroundColor: "#fb641b",
+                      color: "#fff",
+                      fontSize: "1em",
+                    }}
                   >
-                    <i className="fa fa-bolt" style={{fontSize:"1.2em"}}></i> BUY NOW
+                    <i className="fa fa-bolt" style={{ fontSize: "1.2em" }}></i>{" "}
+                    BUY NOW
                   </button>
                 </div>
               </div>
@@ -158,7 +172,7 @@ const Product_Details = () => {
                 <div className="col-sm-12 ft13">
                   <span className="label label-success">
                     4.6 <i className="bi bi-star-fill"></i>
-                  </span>{" "}
+                  </span>
                   <strong>2,421 Ratings & Reviews</strong>
                 </div>
               </div>
@@ -171,13 +185,12 @@ const Product_Details = () => {
                 <h6>Available offers</h6>
                 <div className="mt-2">
                   <h6 className="ft14">
-                    {" "}
                     <img
                       src="https://rukminim1.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90"
                       width="16px"
                       className="mr-2"
                       alt=""
-                    />{" "}
+                    />
                     EMIs from <strong>Rs 3,070/month </strong>
                     <a href="">
                       View Plans <i className="fa fa-chevron-right"></i>
@@ -185,26 +198,24 @@ const Product_Details = () => {
                   </h6>
 
                   <h6 className="ft14">
-                    {" "}
                     <img
                       src="https://rukminim1.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90"
                       width="16px"
                       className="mr-2"
                       alt=""
-                    />{" "}
+                    />
                     <span className="glyphicon glyphicon-tag"></span>
                     <strong> Bank Offer</strong> 5% Instant Discount on Visa
                     Cards for First 3 Online Payments. <a href="">T&C</a>
                   </h6>
 
                   <h6 className="ft14">
-                    {" "}
                     <img
                       src="https://rukminim1.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90"
                       width="16px"
                       className="mr-2"
                       alt=""
-                    />{" "}
+                    />
                     <span className="glyphicon glyphicon-tag"></span>
                     <strong> Bank Offer</strong> Extra 5% off* with Axis Bank
                     Buzz Credit Card. <a href="">T&C</a>
@@ -218,7 +229,11 @@ const Product_Details = () => {
                   <div className="">
                     <button
                       className="btn btn-default"
-                      style={{width:"50px", border:"1px", dashed:"#084a85"}}
+                      style={{
+                        width: "50px",
+                        border: "1px",
+                        dashed: "#084a85",
+                      }}
                     >
                       <img
                         src="https://cdn.mobilephonesdirect.co.uk/images/handsets/480/apple/apple-iphone-x-silver.png"
@@ -228,7 +243,7 @@ const Product_Details = () => {
                     </button>
                     <button
                       className="btn btn-default"
-                      style={{width:"50px", border:"1px", dashed:"red"}}
+                      style={{ width: "50px", border: "1px", dashed: "red" }}
                     >
                       <img
                         src="https://cdn.mobilephonesdirect.co.uk/images/handsets/480/apple/apple-iphone-x-silver.png"
@@ -238,7 +253,7 @@ const Product_Details = () => {
                     </button>
                     <button
                       className="btn btn-default"
-                      style={{width:"50px", border:"1px", dashed:"orange"}}
+                      style={{ width: "50px", border: "1px", dashed: "orange" }}
                     >
                       <img
                         src="https://cdn.mobilephonesdirect.co.uk/images/handsets/480/apple/apple-iphone-x-silver.png"
@@ -248,7 +263,7 @@ const Product_Details = () => {
                     </button>
                     <button
                       className="btn btn-default"
-                      style={{width:"50px", border:"1px", dashed:"pink"}}
+                      style={{ width: "50px", border: "1px", dashed: "pink" }}
                     >
                       <img
                         src="https://cdn.mobilephonesdirect.co.uk/images/handsets/480/apple/apple-iphone-x-silver.png"
@@ -258,7 +273,11 @@ const Product_Details = () => {
                     </button>
                     <button
                       className="btn btn-default"
-                      style={{width:"50px", border:"1px", dashed:"#084a85"}}
+                      style={{
+                        width: "50px",
+                        border: "1px",
+                        dashed: "#084a85",
+                      }}
                     >
                       <img
                         src="https://cdn.mobilephonesdirect.co.uk/images/handsets/480/apple/apple-iphone-x-silver.png"
@@ -274,13 +293,13 @@ const Product_Details = () => {
                   <div className="">
                     <button
                       className="btn btn-default"
-                      style={{border:"1px", dashed:"#084a85"}}
+                      style={{ border: "1px", dashed: "#084a85" }}
                     >
                       128 GB
                     </button>
                     <button
                       className="btn btn-default"
-                      style={{border:"1px", dashed:"#084a85"}}
+                      style={{ border: "1px", dashed: "#084a85" }}
                     >
                       256 GB
                     </button>
@@ -303,8 +322,11 @@ const Product_Details = () => {
                 </div>
                 <div className="mt-3">
                   <h5 className="ft12">
-                    Delivery in 3-4 days |{" "}
-                    <a href="" style={{color:"green", textDecoration:"none"}}>
+                    Delivery in 3-4 days |
+                    <a
+                      href=""
+                      style={{ color: "green", textDecoration: "none" }}
+                    >
                       Free
                     </a>
                   </h5>
@@ -321,7 +343,6 @@ const Product_Details = () => {
                       <p> 12MP + 12MP Dual Rear Camera | 7MP Front Camera</p>
                       <p> lithium-ion Battery</p>
                       <p>
-                        {" "}
                         A11 Bionic Chip with 64-bit Architecture, Neural Engine,
                         Embedded M11 Motion Co-processor
                       </p>
@@ -338,7 +359,6 @@ const Product_Details = () => {
                       <p> 12MP + 12MP Dual Rear Camera | 7MP Front Camera</p>
                       <p> lithium-ion Battery</p>
                       <p>
-                        {" "}
                         A11 Bionic Chip with 64-bit Architecture, Neural Engine,
                         Embedded M11 Motion Co-processor
                       </p>
@@ -479,7 +499,7 @@ const Product_Details = () => {
                   <div className="col-xl-6 col-lg-6 text-center text-lg-left">
                     <div className="copyright-text">
                       <p>
-                        Copyright &copy; 2023, All Right Reserved{" "}
+                        Copyright &copy; 2023, All Right Reserved
                         <a href="#">flipkart</a>
                       </p>
                     </div>
