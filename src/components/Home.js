@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { saveCategories } from "../redux/product.slice";
-import { get } from "./../service/product.service";
+import { getCategoryData } from "../redux/product.slice";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -10,19 +9,10 @@ const Home = () => {
   });
   let dispatch = useDispatch();
   let navigate = useNavigate();
-  //useState
-
-  let getAData = async () => {
-    let url = "http://localhost:3001/categories";
-    let result = await get(url);
-    if (result) {
-      dispatch(saveCategories(result));
-    }
-  };
 
   //onload ---> mountaing
   useEffect(() => {
-    if (categories.length === 0) getAData();
+    if (categories.length === 0) dispatch(getCategoryData());
     //console.log("home is mounted")
     //unmounting
     return () => {
