@@ -9,6 +9,7 @@ let ProductSlice = createSlice({
   },
   reducers: {
     getCategoryData: (state, action) => {},
+    getCategoryWiseProductData: (state, action) => {},
     saveProduct: (state, action) => {
       state.productList = action.payload;
     },
@@ -51,4 +52,5 @@ export const {
   removeFromCart,
   manageQty,
   getCategoryData,
+  getCategoryWiseProductData,
 } = ProductSlice.actions;

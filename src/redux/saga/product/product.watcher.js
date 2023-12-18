@@ -1,10 +1,17 @@
 import { takeLatest } from "redux-saga/effects";
-import { getCategoryData } from "../../product.slice";
-import { getCategoriesHandler } from "./product.handler";
+import { getCategoryData, getCategoryWiseProductData } from "../../product.slice";
+import {
+  getCategoriesHandler,
+  getCategoriesWiseProductHandler,
+} from "./product.handler";
 
+export function* getCategoriesWatcher() {
+  yield takeLatest(getCategoryData.type, getCategoriesHandler);
+}
 
-
-export function* getCategoriesWatcher()
-{
-    yield takeLatest(getCategoryData.type,getCategoriesHandler);
+export function* getCategoriesWiseProductWatcher() {
+  yield takeLatest(
+    getCategoryWiseProductData.type,
+    getCategoriesWiseProductHandler
+  );
 }

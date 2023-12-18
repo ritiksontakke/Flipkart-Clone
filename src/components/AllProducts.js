@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { get } from "../service/product.service";
-import { saveProduct, saveToCart } from "../redux/product.slice";
+import { getCategoryWiseProductData, saveProduct, saveToCart } from "../redux/product.slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const AllProducts = () => {
@@ -10,18 +10,10 @@ const AllProducts = () => {
   let { productList } = useSelector((state) => {
     return state.product;
   });
-  let getProductList = async () => {
-    let id = searchParams.get("c_id");
-    let url = "http://localhost:3001/products?c_id=" + id;
-    let result = await get(url);
-    if (result) {
-      dispatch(saveProduct(result));
-    }
-  };
   //onLoad
   useEffect(() => {
-    getProductList();
-
+    let id = searchParams.get("c_id");
+    dispatch(getCategoryWiseProductData(id));
     //on unmount ..removing list
     return () => {
       dispatch(saveProduct([]));
