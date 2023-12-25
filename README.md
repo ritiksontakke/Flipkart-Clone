@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Flipkart Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This solo project revolutionizes e-commerce, optimizing the shopping cart and creating a robust product catalog. Leveraging React, Node.js, and MongoDB, it delivers a seamless and user-friendly platform for efficient shopping. Explore an enhanced shopping experience with user-friendly features and a dynamic interface.
 
-## Available Scripts
+## Team Members
+<ul>
+  <li><a href="https://github.com/ritiksontakke" target="_blank">Ritik Sontakke</a></li>
+ </ul> 
 
-In the project directory, you can run:
+ ## Language
+- JavaScript
 
-### `npm start`
+## Database
+- No-SQL (MongoDB)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠 Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-  MongoDB
+-  Express.js
+-  React
+-  Node.js
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- User-friendly options for quantity adjustment, product removal, and a concise order summary.
+- Categories, subcategories, and detailed product information with images, descriptions, and prices.
+- Solely led development, integrating React for a UI, Node.js for a robust backend, and MongoDB for efficient data management.
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js installed
+- MongoDB installed and running
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ritiksontakke/Flipkart-Clone.git
+   cd my-Flipkart-Clone
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Flow of User
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Home
+- Categories (i.e Men's Clothing, Jewellery, Electronics, Women's Clothing)
+- Product Details Page
+- Add to cart
+- Manage Quantity
+- Place order
+- Add Products
+- Delete Products
+- View Products
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Thank you note
+Thank you all who is giving precious time to visit my little creative project which is made with lot of efforts.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_<p align="center"><sub>- Readme file designed by <a href="https://github.com/ritiksontakke" target="_blank">Ritik Sontakke</a> -</sub></p>_
