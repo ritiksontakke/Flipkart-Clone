@@ -37,19 +37,6 @@ const Product_Details = () => {
                 </button>
               </form>
               <ul className="navbar-nav  mb-2 mr-auto mb-lg-0 ms-3">
-                {/* <!-- <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Avinash
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="#">My Profile</a></li>
-                                <li><a className="dropdown-item" href="#">Order</a></li>
-                                <li><a className="dropdown-item" href="#">Wishlist</a></li>
-                                <li><a className="dropdown-item" href="#">Notification</a></li>
-                                <li><a className="dropdown-item" href="#">Logout</a></li>
-                            </ul>
-                        </li> --> */}
 
                 <li className="nav-item">
                   <a
