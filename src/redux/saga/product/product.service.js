@@ -10,3 +10,4 @@ export const getCategoriesWiseProductService = async (id) => {
   let response = await fetch(url, { method: "GET" });
   return response.json()
 };
+// ccccc
